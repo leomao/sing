@@ -11,17 +11,25 @@ class Machine {
     }
 
     refresh_question() {
+        let a = [];
+        console.log(a);
         const rd = Math.floor(Math.random() * this.question_n);
         this.question = questions[rd];
         this.question_html.text(this.question.question);
+        this.answer_html.text('');
+    }
+
+    show_answer() {
+        this.answer_html.text(this.question.answer);
     }
 
     next() {
         if (!this.state) {
             this.state = 1;
+            this.show_answer();
         } else {
             this.state = 0;
-            refresh_question();
+            this.refresh_question();
         }
     }
 

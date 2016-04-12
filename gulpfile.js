@@ -29,7 +29,7 @@ const logError = (err) => {
 }
 
 gulp.task('browser-sync', () => {
-    browserSync.init({
+    return browserSync.init({
         server: {
             baseDir: config.out.base,
         },
@@ -38,26 +38,26 @@ gulp.task('browser-sync', () => {
 });
 
 gulp.task('jade', () => {
-    gulp.src('src/jade/index.jade')
-        .pipe($.jade())
-        .on('error', logError)
-        .pipe(gulp.dest(config.out.html))
-        .pipe(browserSync.stream())
+    return gulp.src('src/jade/index.jade')
+           .pipe($.jade())
+           .on('error', logError)
+           .pipe(gulp.dest(config.out.html))
+           .pipe(browserSync.stream())
 });
 
 gulp.task('css', () => {
-    gulp.src('src/css/**/*.css')
-        .pipe($.postcss([
-            require('postcss-short'),
-            require('precss'),
-        ]))
-        .on('error', logError)
-        .pipe(gulp.dest(config.out.css))
-        .pipe(browserSync.stream())
+    return gulp.src('src/css/**/*.css')
+          .pipe($.postcss([
+              require('postcss-short'),
+              require('precss'),
+            ]))
+          .on('error', logError)
+          .pipe(gulp.dest(config.out.css))
+          .pipe(browserSync.stream())
 });
 
 gulp.task('js', () => {
-    browserify({entries: ['./src/js/main.js']})
+    return browserify({entries: ['./src/js/main.js']})
         .transform(babelify, {
             presets: ['stage-0'],
             plugins: ["transform-es2015-modules-commonjs"],
@@ -80,12 +80,17 @@ gulp.task('clean', () => {
 })
 
 gulp.task('deploy', () => {
-    gulp.src('./static/**/*').pipe($.ghPages());
+    return gulp.src('./static/**/*').pipe($.ghPages());
 })
+
+gulp.task('jquery', () => {
+    return gulp.src('node_modules/jquery/dist/jquery.min.js')
+        .pipe(gulp.dest('./static/semantic/'));
+});
 
 gulp.task('semantic', semantic);
 
-gulp.task('init', ['semantic']);
+gulp.task('init', ['semantic', 'jquery']);
 
 gulp.task('build', ['jade', 'css', 'js']);
 
