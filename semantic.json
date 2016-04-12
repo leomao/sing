@@ -4,16 +4,16 @@
     "source": {
       "config": "src/theme.config",
       "definitions": "src/definitions/",
-      "site": "src/site/",
+      "site": "../src/",
       "themes": "src/themes/"
     },
     "output": {
-      "packaged": "dist/",
-      "uncompressed": "dist/components/",
-      "compressed": "dist/components/",
-      "themes": "dist/themes/"
+      "packaged": "../static/semantic/",
+      "uncompressed": "dist/component",
+      "compressed": "dist/component",
+      "themes": "../static/semantic/themes/"
     },
-    "clean": "dist/"
+    "clean": "../static/semantic"
   },
   "permission": false,
   "rtl": "No",

@@ -79,6 +79,10 @@ gulp.task('clean', () => {
     del(['static/**/*'])
 })
 
+gulp.task('deploy', () => {
+    gulp.src('./static/**/*').pipe($.ghPages());
+})
+
 gulp.task('semantic', semantic);
 
 gulp.task('init', ['semantic']);
