@@ -7,9 +7,26 @@ body
     div.twelve.wide.column
       div.ui.segments
         div.ui.segment
-          p#question-para 123
+          p#question-para
         div.ui.secondary.segment
-          p#answer-para 234
+          p#answer-para
+
+      div#submit-grid.ui.grid.centered
+        div.eight.wide.column
+          button#send-button.ui.fluid.labeled.icon.button.blue
+            i.icon.send
+            | Send
+
+      div#feedback-grid.ui.grid.centered
+        div.four.wide.column
+          button#correct-button.ui.fluid.labeled.icon.button.positive
+            i.icon.checkmark
+            | Correct
+
+        div.four.wide.column
+          button#wrong-button.ui.fluid.labeled.icon.button.negative
+            i.icon.remove
+            | Wrong
 
   script(src="semantic/jquery.min.js")
   script(src="semantic/semantic.min.js")
