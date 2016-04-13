@@ -8,13 +8,16 @@ class Machine {
         this.answer_html = $('#answer-para');
         this.question_n = questions.length;
         this.state = 0;
+        this.permutation = [];
+        for (let i=0; i<this.question_n; i++) {
+            this.permutation.push(i);
+        }
     }
 
     refresh_question() {
-        let a = [];
-        console.log(a);
-        const rd = Math.floor(Math.random() * this.question_n);
-        this.question = questions[rd];
+        let id = this.permutation[this.current_cursor];
+        this.current_cursor += 1;
+        this.question = questions[id];
         this.question_html.text(this.question.question);
         this.answer_html.text('');
     }
@@ -33,7 +36,18 @@ class Machine {
         }
     }
 
+    shuffle() {
+        for (let i=this.question_n-1; i>=1; i--) {
+            let rd = Math.floor(Math.random() * (i+1));
+            let temp = this.permutation[rd];
+            this.permutation[rd] = this.permutation[i];
+            this.permutation[i] = temp;
+        }
+        this.current_cursor = 0;
+    }
+
     init() {
+        this.shuffle();
         this.refresh_question();
         $('body').click( () => this.next() )
     }
