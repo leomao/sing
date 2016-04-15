@@ -5,6 +5,15 @@ include header
 body
   div#main-grid.ui.center.aligned.grid
     div.twelve.wide.column
+      div#status-bar.ui.segment
+        div#progress-bar.ui.progress.indicating.top.attached
+          div.bar
+        span#progress-text
+        i.icon.checkmark.green
+        span#correct-text
+        i.icon.remove.red
+        span#wrong-text
+
       div.ui.segments
         div.ui.segment
           p#question-para
@@ -27,6 +36,15 @@ body
           button#wrong-button.ui.fluid.labeled.icon.button.negative
             i.icon.remove
             | Wrong
+
+  div#modal.ui.modal
+    div.header Finished.
+    div.description
+      p#modal-text
+    div.actions
+      div#modal-button.ui.button.positive.right
+        | Next
+
 
   script(src="semantic/jquery.min.js")
   script(src="semantic/semantic.min.js")

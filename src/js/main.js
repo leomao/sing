@@ -18,14 +18,30 @@ class Machine {
         this.answer_html = $('#answer-para');
         this.submit_html = $('#submit-grid');
         this.feedback_html = $('#feedback-grid');
+        this.progress_bar = $('#progress-bar');
+        this.text = {
+            progress: $('#progress-text'),
+            correct: $('#correct-text'),
+            wrong: $('#wrong-text'),
+        };
+        this.modal = {
+            main: $('#modal'),
+            text: $('#modal-text'),
+            button: $('#modal-button'),
+        };
+
         this.question_n = questions.length;
         this.permutation = [];
         this.currentQID = null;
         this.wrong_questions = [];
+        this.current_cursor = 0;
+        this.correct_n = 0;
         this.state = 0;
         for (let i=0; i<this.question_n; i++) {
             this.permutation.push(i);
         }
+
+        this.change_status();
     }
 
     refresh_question() {
@@ -37,13 +53,12 @@ class Machine {
             if (this.wrong_questions.length == 0) {
                 this.question_html.text('End');
                 this.answer_html.text('');
+                this.show_modal(0, this.question_n);
                 return 0;
             } else {
-                this.permutation = this.wrong_questions;
-                this.wrong_questions = [];
-                random_shuffle(this.permutation);
-                this.question_n = this.permutation.length;
-                this.current_cursor = 0;
+                let [w, n] = [this.wrong_questions.length, this.question_n];
+                this.review_wrong_question();
+                this.show_modal(w, n);
             }
         }
 
@@ -52,6 +67,28 @@ class Machine {
         this.question = questions[this.currentQID];
         this.question_html.text(this.question.question);
         this.answer_html.text('');
+        this.progress_bar.progress('increment');
+        this.change_status();
+    }
+
+    show_modal (wn, qn) {
+        if (wn == 0) {
+            this.modal.text.text('You have correctly answered all the question!');
+            this.modal.button.addClass('disabled');
+        } else {
+            this.modal.text.text(`You have answered all the question and scored ${qn-wn} / ${qn}.
+Continue to review the ${wn} incorrect question`);
+        }
+        this.modal.main.modal('show');
+    }
+
+    review_wrong_question() {
+        this.permutation = this.wrong_questions;
+        this.wrong_questions = [];
+        random_shuffle(this.permutation);
+        this.question_n = this.permutation.length;
+        this.current_cursor = 0;
+        this.correct_n = 0;
     }
 
     show_answer() {
@@ -66,10 +103,17 @@ class Machine {
         this.show_answer();
     }
 
+    change_status(correct) {
+        this.text.progress.text(`${this.current_cursor} / ${this.question_n}`);
+        console.log(this.current_cursor);
+        this.text.correct.text(`${this.correct_n}`);
+        this.text.wrong.text(`${this.current_cursor - this.correct_n - 1}`);
+    }
+
     feedback(flag) {
         this.state = 0;
         if (!flag) this.wrong_questions.push(this.currentQID);
-        console.log(this.wrong_questions);
+        else this.correct_n += 1;
         this.refresh_question();
     }
 
@@ -79,6 +123,7 @@ class Machine {
     }
 
     init() {
+        this.progress_bar.progress({value: 0, total: this.question_n});
         this.shuffle();
         this.refresh_question();
         $('#send-button').click( () => this.submit() );

@@ -10,3 +10,14 @@
 #feedback-grid {
     margin-top: 1rem;
 }
+
+#status-bar {
+    padding: 2px 1rem;
+    span {
+        margin-right: 10px;
+    }
+}
+
+#modal-text {
+    padding: 8px;
+}
