@@ -891,7 +891,7 @@ let questions = [
     },
     {
         question: '戰國三英傑分別為？出自名古屋的哪裡？' ,
-        answer: '織田信長(尾張)、豐田秀吉(尾張)和德川家康(三河)',
+        answer: '織田信長(尾張)、豐臣秀吉(尾張)和德川家康(三河)',
         level: 3,
     },
     {
@@ -900,17 +900,17 @@ let questions = [
         level: 3,
     },
     {
-        question: '本能寺之變前織田派豐田去打哪裡的哪個勢力？' ,
+        question: '本能寺之變前織田派豐臣去打哪裡的哪個勢力？' ,
         answer: '中國地方、毛利輝元。',
         level: 3,
     },
     {
-        question: '豐田軍知道本能寺之變後趕回哪裡？' ,
+        question: '豐臣軍知道本能寺之變後趕回哪裡？' ,
         answer: '山崎',
         level: 3,
     },
     {
-        question: '山崎的致高點為？當時被豐田軍的誰所占？' ,
+        question: '山崎的致高點為？當時被豐臣軍的誰所占？' ,
         answer: '天王山、黑田官兵衛。',
         level: 3,
     },
@@ -920,7 +920,7 @@ let questions = [
         level: 3,
     },
     {
-        question: '豐田本來要傳給誰？卻又生下了誰？' ,
+        question: '豐臣本來要傳給誰？卻又生下了誰？' ,
         answer: '秀次、秀賴。',
         level: 3,
     },
