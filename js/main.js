@@ -639,7 +639,7 @@ let questions = [{
     level: 3
 }, {
     question: '慶應慶塾大學的校訓為？',
-    answer: '健筆遠勝劍。',
+    answer: '健筆遠勝利劍。',
     level: 3
 }, {
     question: '明治 5 年，福澤和誰共同出版了何著作，代來人生而平等的觀念？',
@@ -1069,6 +1069,22 @@ let questions = [{
 }, {
     question: '維新後有哪四個新階級？',
     answer: '華族(公卿、大名)、士族(舊武士階級)、平民(舊農工商)、新平民(穢多、非人)。',
+    level: 3
+}, {
+    question: '日本三神器是哪三個？',
+    answer: '八尺瓊勾玉、八咫鏡和天叢雲劍。',
+    level: 3
+}, {
+    question: '一個指中國在清代已變為蠻夷的學說稱為？',
+    answer: '華夷變態論。',
+    level: 3
+}, {
+    question: '日本刀是用什麼技術做成？和他相對的是？',
+    answer: '包鋼、夾鋼。',
+    level: 3
+}, {
+    question: '為鎮壓尊攘勢力，幕府所組的維安部隊稱為？',
+    answer: '新選(撰)組。',
     level: 3
 }];
 
