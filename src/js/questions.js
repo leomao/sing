@@ -1,7 +1,7 @@
 let questions = [
     {
-        question: '西鄉的肖像是由哪個版畫家所做，跟據哪兩人的相貌繪製而成？',
-        answer: `由義大利版畫家 Edoardo Chiossone, 跟據其弟西鄉從道和其堂弟大山巖繪製而成。`,
+        question: '西鄉的肖像是由哪個版畫家所做，根據哪兩人的相貌繪製而成？',
+        answer: `由義大利版畫家 Edoardo Chiossone, 根據其弟西鄉從道和其堂弟大山巖繪製而成。`,
         level: 3,
     },
     {
@@ -70,13 +70,13 @@ let questions = [
         level: 5,
     },
     {
-        question: '戊辰戰爭的東征大將軍為？',
+        question: '戊辰戰爭的東征大總督為？',
         answer: '有栖川宮熾仁親王',
         level: 4,
     },
     {
         question: '戊辰戰爭西鄉的職位為？',
-        answer: '東征大將軍的參謀。',
+        answer: '東征大總督府的參謀。',
         level: 4,
     },
     {
@@ -348,7 +348,7 @@ let questions = [
     },
     {
         question: '戊辰戰爭中對抗明治天皇的同盟為？',
-        answer: '奧與越列同盟',
+        answer: '奧羽越列藩同盟',
         level: 3,
     },
     {
@@ -487,7 +487,7 @@ let questions = [
         level: 3,
     },
     {
-        question: '誰曾擔任樞密顧問官，且常和正黨內閣制唱反調？',
+        question: '誰曾擔任樞密顧問官，且常和政黨內閣制唱反調？',
         answer: '伊東巳代治',
         level: 3,
     },
@@ -665,7 +665,7 @@ let questions = [
     },
     {
         question: '福澤派誰去朝鮮發行了哪兩個報紙？' ,
-        answer: '漢城旬報、漢城周報。',
+        answer: '井上角五郎，漢城旬報、漢城周報。',
         level: 3,
     },
     {
@@ -774,7 +774,7 @@ let questions = [
         level: 3,
     },
     {
-        question: '第一國立銀行為於何處？' ,
+        question: '第一國立銀行位於何處？' ,
         answer: '東京丸之內',
         level: 3,
     },
@@ -891,7 +891,7 @@ let questions = [
     },
     {
         question: '戰國三英傑分別為？出自名古屋的哪裡？' ,
-        answer: '織田信長(尾張)、豐田秀吉(尾張)和德川家康(三河)',
+        answer: '織田信長(尾張)、豐臣秀吉(尾張)和德川家康(三河)',
         level: 3,
     },
     {
@@ -900,17 +900,17 @@ let questions = [
         level: 3,
     },
     {
-        question: '本能寺之變前織田派豐田去打哪裡的哪個勢力？' ,
+        question: '本能寺之變前織田派豐臣去打哪裡的哪個勢力？' ,
         answer: '中國地方、毛利輝元。',
         level: 3,
     },
     {
-        question: '豐田軍知道本能寺之變後趕回哪裡？' ,
+        question: '豐臣軍知道本能寺之變後趕回哪裡？' ,
         answer: '山崎',
         level: 3,
     },
     {
-        question: '山崎的致高點為？當時被豐田軍的誰所占？' ,
+        question: '山崎的致高點為？當時被豐臣軍的誰所占？' ,
         answer: '天王山、黑田官兵衛。',
         level: 3,
     },
@@ -920,7 +920,7 @@ let questions = [
         level: 3,
     },
     {
-        question: '豐田本來要傳給誰？卻又生下了誰？' ,
+        question: '豐臣本來要傳給誰？卻又生下了誰？' ,
         answer: '秀次、秀賴。',
         level: 3,
     },
@@ -1048,7 +1048,7 @@ let questions = [
     },
     {
         question: '北白川宮能久親王在戊辰戰爭時因為長住什麼，而被擁立為哪個同盟的盟主，號什麼？' ,
-        answer: '關東的輪王寺宮，奧與越列同盟，東武天皇。',
+        answer: '關東的輪王寺宮，奧羽越列藩同盟，東武天皇。',
         level: 3,
     },
     {
@@ -1057,8 +1057,8 @@ let questions = [
         level: 3,
     },
     {
-        question: '鷗外的墓為於？該處亦為誰的墓？' ,
-        answer: '永明寺、津和野藩的菩提寺。',
+        question: '鷗外的墓位於？該處亦為誰的墓？' ,
+        answer: '永明寺、津和野藩主(菩提寺)。',
         level: 3,
     },
 
@@ -1099,7 +1099,7 @@ let questions = [
     },
     {
         question: '日本皇室子孫脫離皇室稱作？' ,
-        answer: '臣籍降下、皇室離脫。',
+        answer: '臣籍降下、皇籍離脫。',
         level: 3,
     },
     {
