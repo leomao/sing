@@ -879,8 +879,12 @@ let questions = [{
     answer: '天王山、黑田官兵衛。',
     level: 3
 }, {
-    question: '安士城位於？',
+    question: '安土城位於？',
     answer: '滋賀縣琵琶湖畔',
+    level: 3
+}, {
+    question: '桃山城是誰建的？又稱？',
+    answer: '豐臣秀吉建的，又稱伏見城。',
     level: 3
 }, {
     question: '豐臣本來要傳給誰？卻又生下了誰？',
@@ -988,7 +992,7 @@ let questions = [{
     level: 3
 }, {
     question: '能久親王的銅像位於哪裡？此建築本來為？',
-    answer: '東京都千代田區北之丸公園的東京國立近代美術館的工藝館右側。',
+    answer: '東京都千代田區北之丸公園的東京國立近代美術館的工藝館右側。原為近衛師團的司令部。',
     level: 3
 }, {
     question: '鷗外的墓位於？該處亦為誰的墓？',
