@@ -84,11 +84,13 @@ class Machine {
             spans.push($('<span>', {
                 text: `(${match[1]}？)`,
                 'class': 'subproblem',
-                click: ((c, he) => function() { 
+                click: ((c, he) => function(e) { 
                     const me = $(this);
                     me.text(c);
                     me.addClass('solved');
                     he.subproblem_solved();
+                    me.off('click');
+                    e.preventDefault();
                 })(match[2], this),
             }));
             idxNow = match.index + match[0].length;
