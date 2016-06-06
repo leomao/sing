@@ -6,7 +6,8 @@ const gulp = require('gulp'),
       browserify = require('browserify'),
       babelify = require('babelify'),
       source = require('vinyl-source-stream'),
-      del = require('del');
+      del = require('del'),
+      combine = require('stream-combiner2');
 
 const semantic = require('./semantic/tasks/build');
 
@@ -57,16 +58,21 @@ gulp.task('css', () => {
 });
 
 gulp.task('js', () => {
-    return browserify({entries: ['./src/js/main.js']})
+    const bundle = browserify({entries: ['./src/js/main.js']})
         .transform(babelify, {
             presets: ['stage-0'],
             plugins: ["transform-es2015-modules-commonjs"],
-        })
-        .bundle()
-        .on('error', logError)
-        .pipe(source('main.js'))
-        .pipe(gulp.dest(config.out.js))
-        .pipe(browserSync.stream({once: true}))
+        }).bundle();
+
+    const comb = combine.obj([
+        bundle,
+        source('main.js'),
+        gulp.dest(config.out.js),
+        browserSync.stream({once: true}),
+    ]);
+    comb.on('error', logError);
+
+    return comb;
 });
 
 gulp.task('watch', () => {

@@ -15,8 +15,6 @@ function random_shuffle(arr) {
 class Machine {
     constructor() {
         this.question_html = $('#question-para');
-        this.answer_html = $('#answer-para');
-        this.submit_html = $('#submit-grid');
         this.feedback_html = $('#feedback-grid');
         this.progress_bar = $('#progress-bar');
         this.text = {
@@ -40,19 +38,19 @@ class Machine {
         for (let i=0; i<this.question_n; i++) {
             this.permutation.push(i);
         }
+        this.subproblem_n = 0;
+        this.subproblem_solved_n = 0;
 
         this.change_status();
     }
 
     refresh_question() {
         this.state = 0;
-        this.submit_html.show();
         this.feedback_html.hide();
 
         if (this.current_cursor >= this.question_n) {
             if (this.wrong_questions.length == 0) {
                 this.question_html.text('End');
-                this.answer_html.text('');
                 this.show_modal(0, this.question_n);
                 return 0;
             } else {
@@ -65,10 +63,48 @@ class Machine {
         this.currentQID = this.permutation[this.current_cursor];
         this.current_cursor += 1;
         this.question = questions[this.currentQID];
-        this.question_html.text(this.question.question);
-        this.answer_html.text('');
+        this.generate_question_html();
         this.progress_bar.progress('increment');
         this.change_status();
+    }
+
+    generate_question_html() {
+        console.log(123);
+        var spans = [];
+        const regex = /\{([^}]*):([^}]*)\}/g;
+        var match, idxNow = 0;
+        const str = this.question.question;
+        const len = str.length;
+        const pushStr = (s) => {
+            spans.push($('<span>', {text: s}));
+        };
+        this.subproblem_n = this.subproblem_solved_n = 0;
+        while ((match = regex.exec(str)) != null) {
+            pushStr(str.substring(idxNow, match.index));
+            spans.push($('<span>', {
+                text: `(${match[1]}？)`,
+                'class': 'subproblem',
+                click: ((c, he) => function() { 
+                    const me = $(this);
+                    me.text(c);
+                    me.addClass('solved');
+                    he.subproblem_solved();
+                })(match[2], this),
+            }));
+            idxNow = match.index + match[0].length;
+            this.subproblem_n ++;
+        }
+
+        pushStr(str.substring(idxNow));
+
+        this.question_html.empty();
+        this.question_html.append(spans);
+    }
+
+    subproblem_solved() {
+        this.subproblem_solved_n ++;
+        if (this.subproblem_solved_n == this.subproblem_n)
+            this.problem_end();
     }
 
     show_modal (wn, qn) {
@@ -91,21 +127,13 @@ Continue to review the ${wn} incorrect question`);
         this.correct_n = 0;
     }
 
-    show_answer() {
+    problem_end() {
         this.state = 1;
         this.feedback_html.show();
-        this.submit_html.hide();
-        this.answer_html.text(this.question.answer);
-    }
-
-    submit() {
-        this.state = 1;
-        this.show_answer();
     }
 
     change_status(correct) {
         this.text.progress.text(`${this.current_cursor} / ${this.question_n}`);
-        console.log(this.current_cursor);
         this.text.correct.text(`${this.correct_n}`);
         this.text.wrong.text(`${this.current_cursor - this.correct_n - 1}`);
     }
@@ -126,7 +154,6 @@ Continue to review the ${wn} incorrect question`);
         this.progress_bar.progress({value: 0, total: this.question_n});
         this.shuffle();
         this.refresh_question();
-        $('#send-button').click( () => this.submit() );
         $('#correct-button').click( () => this.feedback(true) );
         $('#wrong-button').click( () => this.feedback(false) );
     }
